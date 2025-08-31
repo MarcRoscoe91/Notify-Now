@@ -1,8 +1,14 @@
 import cron from 'node-cron';
 
-export function startCron(){
-  cron.schedule('0 9 * * *', async ()=>{
-    console.log('Daily reminder sweep at 09:00 — wire your DB + email logic here.');
-  });
-  console.log('Reminder cron scheduled at 09:00 daily');
+export async function runReminderSweep() {
+  console.log(`[cron] Running reminder sweep at ${new Date().toISOString()}`);
+  // TODO: replace this with real DB + email/SMS logic
+}
+
+export function startCron() {
+  cron.schedule('0 9 * * *', async () => {
+    await runReminderSweep();
+  }, { timezone: 'Europe/London' });
+
+  console.log('[cron] Scheduled daily sweep at 09:00 Europe/London');
 }
