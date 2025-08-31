@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NotifyNow — Never miss a renewal again</title>
+  <meta name="description" content="NotifyNow puts every important renewal in one place — MOT, tax, insurance, landlord certificates, passports, subscriptions and more. Email, SMS, and calendar reminders with privacy-first design." />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <style>
+    :root{
+      --bg:#0b0d10; --ink:#e6ecf2; --muted:#9fb0be; --panel:#0d1217; --stroke:#1a2633;
+      --brand:#4da3ff; --brand2:#8c7cff; --ok:#2ecc71; --warn:#ffb020; --bad:#ff4d4d;
+      --radius:16px; --shadow:0 8px 28px rgba(0,0,0,.36);
+    }
+    *{box-sizing:border-box}
+    body{margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; background:#0b0d10; color:var(--ink); line-height:1.55}
+    a{color:var(--brand); text-decoration:none}
+    header{position:sticky; top:0; z-index:40; backdrop-filter:saturate(140%) blur(8px);
+      background:linear-gradient(180deg, rgba(11,13,16,.92), rgba(11,13,16,.78) 70%, transparent); border-bottom:1px solid #141a21}
+    .nav{max-width:1160px; margin:auto; padding:14px 18px; display:flex; align-items:center; gap:14px}
+    .brand{display:flex; align-items:center; gap:10px; color:var(--ink); font-weight:800; letter-spacing:.2px}
+    .brand img{width:28px; height:28px}
+    .links{margin-left:auto; display:flex; gap:14px; align-items:center}
+    .btn{appearance:none; border:1px solid #284055; padding:10px 14px; border-radius:12px; color:var(--ink); background:#10151b; cursor:pointer}
+    .btn.primary{border-color:transparent; background:linear-gradient(135deg, var(--brand), var(--brand2)); color:#061119; font-weight:800}
+    .container{max-width:1160px; margin:auto; padding:42px 18px}
+    .hero{display:grid; grid-template-columns: 1.1fr .9fr; gap:28px; align-items:center}
+    .badge{display:inline-flex; gap:8px; align-items:center; font-size:13px; color:#b9c6d1; border:1px solid #243243; padding:6px 12px; border-radius:999px}
+    h1{font-size:clamp(30px, 5.2vw, 56px); line-height:1.1; margin:14px 0 8px}
+    .lead{color:#cbd5de; font-size:18px; max-width:60ch}
+    .panel{background:var(--panel); border:1px solid var(--stroke); border-radius:var(--radius); box-shadow:var(--shadow); padding:18px}
+    .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+    .grid-2{display:grid; grid-template-columns:repeat(2,1fr); gap:18px}
+    .feat{padding:18px; border:1px solid var(--stroke); border-radius:14px; background:#0c1117; min-height:160px}
+    .feat h3{margin:6px 0 8px; font-size:18px}
+    .how{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+    .how .step{border:1px dashed #274056; border-radius:14px; padding:16px; background:#0c1217}
+    .logos{display:flex; gap:16px; flex-wrap:wrap; align-items:center; color:#a8b3bd}
+    .testi{border-left:3px solid var(--brand); padding-left:14px; color:#cbd5de}
+    footer{border-top:1px solid #141a21; color:#9fb0be}
+    .small{font-size:13px; color:#9fb0be}
+    @media (max-width: 960px){ .hero{grid-template-columns:1fr} .grid-3, .grid-2, .how{grid-template-columns:1fr} }
+  </style>
+</head>
+<body>
+<header>
+  <nav class="nav">
+    <a href="#" class="brand"><img src="assets/favicon.svg" alt=""><span>NotifyNow</span></a>
+    <div class="links">
+      <a href="#features">Features</a>
+      <a href="#how">How it works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn" href="app.html">Open app</a>
+      <a class="btn primary" href="app.html">Get started</a>
+    </div>
+  </nav>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <div>
+      <span class="badge">🔔 One inbox for every renewal</span>
+      <h1>Never miss a renewal again.</h1>
+      <p class="lead">NotifyNow tracks MOT, tax, insurance, landlord certificates, staff training, passports and more — and reminds you by email, SMS, and calendar. Built privacy‑first and ready for UK compliance.</p>
+      <div style="display:flex; gap:12px; margin-top:16px; flex-wrap:wrap">
+        <a class="btn primary" href="app.html">Launch the app</a>
+        <a class="btn" href="#features">See how it works</a>
+      </div>
+      <div class="logos" style="margin-top:18px">
+        <img src="assets/wordmark.svg" alt="NotifyNow wordmark" style="height:44px; border:1px solid #1a2633; border-radius:10px"/>
+        <span class="small">Built for UK users · Service reminders ≠ marketing</span>
+      </div>
+    </div>
+    <div>
+      <div class="panel" style="display:grid; gap:10px">
+        <strong>What you’ll see</strong>
+        <div class="grid-2">
+          <div class="feat"><h3>Smart cadence</h3><p>30 / 14 / 7 / day‑of reminders that you can edit any time.</p></div>
+          <div class="feat"><h3>Proofs & history</h3><p>Attach policies/certificates and keep a renewal timeline.</p></div>
+          <div class="feat"><h3>Vehicle lookups</h3><p>Prefill MOT and vehicle basics by reg (API‑ready).</p></div>
+          <div class="feat"><h3>Teams & family</h3><p>Profiles for people and properties, all in one place.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" style="margin-top:46px">
+    <h2>Features</h2>
+    <div class="grid-3">
+      <div class="feat"><h3>Cross‑category</h3><p>Cars, properties, IDs, subscriptions and more — no more siloed reminders.</p></div>
+      <div class="feat"><h3>Right‑time reminders</h3><p>Email, SMS and calendar; custom per item.</p></div>
+      <div class="feat"><h3>Privacy by design</h3><p>Service reminders kept separate from marketing. Clear consent & controls.</p></div>
+      <div class="feat"><h3>Landlord & SME</h3><p>Gas safety, EICR, EPC, business insurance and staff training templates.</p></div>
+      <div class="feat"><h3>CSV & ICS export</h3><p>Export your data and add deadlines to any calendar.</p></div>
+      <div class="feat"><h3>API‑ready</h3><p>DVSA/DVLA lookups, email parsing, open‑banking add‑ons (optional).</p></div>
+    </div>
+  </section>
+
+  <section id="how" style="margin-top:46px">
+    <h2>How it works</h2>
+    <div class="how">
+      <div class="step"><strong>1) Add it</strong><br/>Type it in, forward an email, or use quick vehicle lookup.</div>
+      <div class="step"><strong>2) Set reminders</strong><br/>Pick your cadence and channels. Done in seconds.</div>
+      <div class="step"><strong>3) Renew with confidence</strong><br/>Keep proofs & history tidy and export anytime.</div>
+    </div>
+  </section>
+
+  <section id="pricing" style="margin-top:46px">
+    <h2>Pricing</h2>
+    <div class="grid-2">
+      <div class="panel">
+        <h3>Free</h3>
+        <p style="font-size:34px; font-weight:800">£0</p>
+        <ul>
+          <li>Up to 5 active items</li>
+          <li>Email reminders</li>
+          <li>CSV & ICS export</li>
+        </ul>
+        <p><a class="btn" href="app.html">Start free</a></p>
+      </div>
+      <div class="panel" style="border-color:#2b89ff">
+        <h3>Premium</h3>
+        <p style="font-size:34px; font-weight:800">£3.99 <span class="small">/mo</span></p>
+        <ul>
+          <li>Unlimited items & documents</li>
+          <li>SMS reminders</li>
+          <li>Family & team profiles</li>
+        </ul>
+        <p><a class="btn primary" href="app.html">Go Premium</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" style="margin-top:46px">
+    <h2>FAQ</h2>
+    <div class="grid-2">
+      <div class="panel"><strong>Are service reminders marketing?</strong><br/><span class="small">No. Service reminders exist to help you renew on time; promotions are opt‑in only.</span></div>
+      <div class="panel"><strong>Are you part of GOV.UK Notify?</strong><br/><span class="small">No. NotifyNow is independent and not affiliated with GOV.UK Notify.</span></div>
+      <div class="panel"><strong>Do you support MOT & tax?</strong><br/><span class="small">The app is built to integrate with official UK APIs for fast lookups.</span></div>
+      <div class="panel"><strong>Can I add my team or properties?</strong><br/><span class="small">Yes — profiles for people and properties, with exports for audits.</span></div>
+    </div>
+  </section>
+</main>
+
+<footer class="container">
+  <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap">
+    <div>© <span id="year"></span> NotifyNow</div>
+    <div class="small">Privacy‑first reminders · <a href="#">Terms</a> · <a href="#">Privacy</a></div>
+  </div>
+</footer>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
