@@ -38,3 +38,6 @@
   },
   "engines": { "node": ">=20" }
 }
+"@types/cookie-parser": "^1.4.7",
+"@types/node-cron": "^3.0.11"
+
