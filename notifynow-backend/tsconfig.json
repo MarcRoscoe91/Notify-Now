@@ -1,15 +1,14 @@
 {
   "compilerOptions": {
     "target": "ES2020",
-    "module": "ES2020",
-    "moduleResolution": "Bundler",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "outDir": "dist",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true
   },
-  "include": [
-    "src/**/*.ts"
-  ]
+  "include": ["src/**/*.ts", "src/types/**/*.d.ts"]
 }
