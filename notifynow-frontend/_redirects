@@ -1,1 +1,2 @@
-/api/*  https://api.notifynow.co.uk/:splat  200
+/api/*   https://api.notify-now.co.uk/:splat  200
+/*       /index.html  200
