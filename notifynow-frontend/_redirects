@@ -1,2 +1,6 @@
-/api/*   https://api.notify-now.co.uk/:splat  200
-/*       /index.html  200
+/api/*     https://api.notify-now.co.uk/:splat  200
+/AddDocuments   /AddDocuments.html   200
+/Documentdetails   /Documentdetails.html   200
+/MyDocuments   /MyDocuments.html   200
+/NotificationSettings   /NotificationSettings.html   200
+/app   /app.html   200
