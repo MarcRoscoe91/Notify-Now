@@ -181,5 +181,41 @@
     if (el) el.textContent = `Signed in as ${user.email || 'user'}`;
   });
 </script>
+<ul id="items" class="list-disc pl-6"></ul>
+
+<form id="add-item" class="mt-4 space-x-2">
+  <input id="title" placeholder="Title (e.g., MOT)" class="border rounded px-2 py-1">
+  <input id="expiry" type="date" class="border rounded px-2 py-1">
+  <button class="bg-blue-600 text-white px-3 py-1 rounded">Add</button>
+</form>
+
+<script type="module">
+  import { listItems, addItem } from '/js/api.js';
+
+  const list = document.getElementById('items');
+  const form = document.getElementById('add-item');
+  const title = document.getElementById('title');
+  const expiry = document.getElementById('expiry');
+
+  async function refresh() {
+    try {
+      const items = await listItems();
+      list.innerHTML = items.map(i => `<li>${i.title} — ${new Date(i.expiryDate).toLocaleDateString()}</li>`).join('');
+    } catch (e) {
+      console.error(e);
+      list.innerHTML = '<li class="text-red-600">Failed to load items.</li>';
+    }
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    await addItem({ title: title.value, expiryDate: new Date(expiry.value).toISOString() });
+    title.value = ''; expiry.value = '';
+    refresh();
+  });
+
+  refresh();
+</script>
+
 </body></html>
 
