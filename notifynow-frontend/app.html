@@ -145,6 +145,7 @@ async function refresh(){items=await listItems();render();}
 async function init(){const user=await me();const authed=!!user;byId('authNotice').classList.toggle('hidden',authed);byId('appArea').classList.toggle('hidden',!authed);byId('addItemBtn').classList.toggle('hidden',!authed);byId('logoutBtn').classList.toggle('hidden',!authed);byId('loginBtn').classList.toggle('hidden',authed);if(authed){await refresh();}}
 init();
 </script>
+<script src="/js/config.js"></script>
 <script type="module">
   import { ping, whoAmI, listItems, addItem, requestMagicLink } from '/js/api.js';
 

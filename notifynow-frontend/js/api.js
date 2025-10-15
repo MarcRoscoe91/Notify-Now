@@ -1,5 +1,5 @@
 // js/api.js
-const API = '/api'; // Netlify proxies to https://api.notify-now.co.uk
+const API = (typeof window !== 'undefined' && window.__NOTIFY_NOW_API__) || '/api';
 
 export async function ping() {
   const r = await fetch(`${API}/`, { credentials: 'include' });
