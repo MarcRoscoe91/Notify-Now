@@ -1,8 +1,8 @@
 diff --git a/notifynow-backend/src/lib/auth.ts b/notifynow-backend/src/lib/auth.ts
-index 8b4b255f7f16e170f28b250ee90eba0c24da246e..bb016651778b1a0f630ea6d3052bb4d6421bb0d2 100644
+index 8b4b255f7f16e170f28b250ee90eba0c24da246e..92c9c4e3eeb73c36b96cd46b28009fac17429644 100644
 --- a/notifynow-backend/src/lib/auth.ts
 +++ b/notifynow-backend/src/lib/auth.ts
-@@ -1,46 +1,65 @@
+@@ -1,46 +1,67 @@
  import { Router } from 'express';
  import jwt from 'jsonwebtoken';
  import { z } from 'zod';
@@ -45,7 +45,10 @@ index 8b4b255f7f16e170f28b250ee90eba0c24da246e..bb016651778b1a0f630ea6d3052bb4d6
  authRouter.post('/magic-link', async (req, res)=>{
    const { email } = EmailReq.parse(req.body);
    const token = signJwt({ sub: email, typ:'magic' }, 60*30);
-   const url = `${process.env.APP_ORIGIN || 'http://localhost:4000'}/api/auth/callback?token=${token}`;
+-  const url = `${process.env.APP_ORIGIN || 'http://localhost:4000'}/api/auth/callback?token=${token}`;
++  const backendOrigin = process.env.RENDER_EXTERNAL_URL || process.env.PUBLIC_BACKEND_URL || 'http://localhost:4000';
++  const normalizedBackend = backendOrigin.endsWith('/') ? backendOrigin.slice(0, -1) : backendOrigin;
++  const url = `${normalizedBackend}/api/auth/callback?token=${token}`;
    const html = `<p>Click to sign in to NotifyNow:</p><p><a href="${url}">${url}</a></p><p>This link expires in 30 minutes.</p>`;
    await sendEmail(email, 'Your sign-in link for NotifyNow', html);
    res.json({ ok:true });
