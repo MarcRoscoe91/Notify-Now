@@ -10,3 +10,4 @@
   },
   "include": ["src"]
 }
+{ "rootDir": "src", "outDir": "dist", "module": "CommonJS", "target": "ES2020" }
