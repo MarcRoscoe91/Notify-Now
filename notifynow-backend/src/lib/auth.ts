@@ -10,8 +10,11 @@ const EmailReq = z.object({ email: z.string().email() });
 const COOKIE_MAX_AGE = 1000 * 60 * 60 * 24 * 30; // 30 days
 
 function cookieOptions(){
-  const secure = !!process.env.APP_ORIGIN && process.env.APP_ORIGIN.includes('https://');
-  return { httpOnly: true, sameSite: 'lax' as const, secure, maxAge: COOKIE_MAX_AGE };
+  const appOrigin = process.env.APP_ORIGIN || '';
+  const isLocal = !appOrigin || appOrigin.includes('localhost') || appOrigin.startsWith('http://');
+  const sameSite: 'lax' | 'none' = isLocal ? 'lax' : 'none';
+  const secure = sameSite === 'none' || appOrigin.startsWith('https://');
+  return { httpOnly: true, sameSite, secure, maxAge: COOKIE_MAX_AGE };
 }
 
 function signJwt(payload: any, expSec: number){
