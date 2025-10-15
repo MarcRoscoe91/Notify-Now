@@ -7,13 +7,19 @@ export const authRouter = Router();
 
 const EmailReq = z.object({ email: z.string().email() });
 
+const COOKIE_MAX_AGE = 1000 * 60 * 60 * 24 * 30; // 30 days
+
+function cookieOptions(){
+  const secure = !!process.env.APP_ORIGIN && process.env.APP_ORIGIN.includes('https://');
+  return { httpOnly: true, sameSite: 'lax' as const, secure, maxAge: COOKIE_MAX_AGE };
+}
+
 function signJwt(payload: any, expSec: number){
   return jwt.sign(payload, process.env.JWT_SECRET!, { algorithm:'HS256', expiresIn: expSec });
 }
 
 function setSessionCookie(res: any, token: string){
-  const secure = !!process.env.APP_ORIGIN && process.env.APP_ORIGIN.startsWith('https');
-  res.cookie('session', token, { httpOnly: true, sameSite:'lax', secure, maxAge: 1000*60*60*24*30 });
+  res.cookie('session', token, cookieOptions());
 }
 
 export async function requireAuth(req: any, res: any, next: any){
@@ -43,4 +49,14 @@ authRouter.get('/callback', async (req: any, res: any)=>{
     setSessionCookie(res, session);
     res.send(`<script>window.opener?window.opener.postMessage('notifynow:login:success','*'):null;window.location='/'</script>`);
   }catch(e){ res.status(400).send('Invalid or expired link.'); }
+});
+
+authRouter.get('/me', requireAuth, (req: any, res)=>{
+  res.json({ user: { id: req.userId, email: req.userId } });
+});
+
+authRouter.post('/logout', (_req, res)=>{
+  const { maxAge: _maxAge, ...opts } = cookieOptions();
+  res.clearCookie('session', { ...opts, expires: new Date(0) });
+  res.json({ ok: true });
 });
