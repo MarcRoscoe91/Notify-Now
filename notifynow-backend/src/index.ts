@@ -1,10 +1,5 @@
-import express from "express";
-const app = express();
-
-const PORT = process.env.PORT || 10000;
-
-app.get("/", (req, res) => {
-  res.send("API running");
-});
-
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+import cors from 'cors';
+app.use(cors({
+  origin: ['https://notify-now.co.uk', 'https://www.notify-now.co.uk'],
+  credentials: true
+}));
