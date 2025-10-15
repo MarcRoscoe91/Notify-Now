@@ -1,0 +1,42 @@
+services:
+  - type: web
+    name: notifynow-backend
+    env: node
+    rootDir: notifynow-backend
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    plan: free
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: APP_ORIGIN
+        fromService:
+          type: static_site
+          name: notifynow-frontend
+          property: url
+      - key: JWT_SECRET
+        sync: false
+      - key: RESEND_API_KEY
+        sync: false
+      - key: EMAIL_FROM
+        sync: false
+      - key: SENDGRID_API_KEY
+        sync: false
+      - key: SENDGRID_FROM
+        sync: false
+      - key: DVSA_API_KEY
+        sync: false
+      - key: DVLA_API_KEY
+        sync: false
+  - type: static_site
+    name: notifynow-frontend
+    rootDir: notifynow-frontend
+    buildCommand: ./render-build.sh
+    publishDir: .
+    plan: free
+    envVars:
+      - key: NOTIFY_NOW_API_BASE
+        fromService:
+          type: web
+          name: notifynow-backend
+          property: url
