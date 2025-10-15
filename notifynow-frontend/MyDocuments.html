@@ -1,51 +1,56 @@
-                <p class="mt-4 text-lg font-semibold text-text-light dark:text-text-dark">No documents yet.</p>
-                <p class="mt-1 text-sm text-text-light/70 dark:text-text-dark/70">Tap the '+' to add your first one!</p>
-            </div>
-            -->
-</div>
-<!-- Floating Action Button (FAB) -->
-<button class="fixed bottom-24 right-6 bg-primary text-white rounded-full h-16 w-16 flex items-center justify-center shadow-lg hover:bg-primary/90 transition-colors">
-<span class="material-symbols-outlined text-3xl">add</span>
-</button>
-<!-- Bottom Navigation Bar -->
-<div class="fixed bottom-0 left-0 right-0 h-20 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 flex justify-around items-center">
-<div class="flex flex-col items-center text-primary">
-<span class="material-symbols-outlined">home</span>
-<span class="text-xs font-medium">Home</span>
-</div>
-<div class="flex flex-col items-center text-gray-500 dark:text-gray-400">
-<span class="material-symbols-outlined">notifications</span>
-<span class="text-xs">Notifications</span>
-</div>
-<div class="flex flex-col items-center text-gray-500 dark:text-gray-400">
-<span class="material-symbols-outlined">settings</span>
-<span class="text-xs">Settings</span>
-</div>
-</div>
-</div>
-        <script src="/js/config.js"></script>
-        <script type="module">
-  import { ping, whoAmI, listItems, addItem, requestMagicLink } from '/js/api.js';
-
-  // quick smoke test in the console
-  ping().then(console.log).catch(console.error);
-
-  // example: show who is logged in
-  whoAmI().then(user => {
-    if (!user) return;
-    const el = document.getElementById('user-badge');
-    if (el) el.textContent = `Signed in as ${user.email || 'user'}`;
-  });
-</script>
-<ul id="items" class="list-disc pl-6"></ul>
-
-<form id="add-item" class="mt-4 space-x-2">
-  <input id="title" placeholder="Title (e.g., MOT)" class="border rounded px-2 py-1">
-  <input id="expiry" type="date" class="border rounded px-2 py-1">
-  <button class="bg-blue-600 text-white px-3 py-1 rounded">Add</button>
-</form>
-
-<script type="module">
-  import { listItems, addItem } from '/js/api.js';
-
-  const list = document.getElementById('items');
+diff --git a/notifynow-frontend/MyDocuments.html b/notifynow-frontend/MyDocuments.html
+index f719e4adccf3f5628772eb843a86dbb66e200ced..29e324bb9ce3ae462e252e954857c157307586c1 100644
+--- a/notifynow-frontend/MyDocuments.html
++++ b/notifynow-frontend/MyDocuments.html
+@@ -146,50 +146,51 @@
+                 <p class="mt-4 text-lg font-semibold text-text-light dark:text-text-dark">No documents yet.</p>
+                 <p class="mt-1 text-sm text-text-light/70 dark:text-text-dark/70">Tap the '+' to add your first one!</p>
+             </div>
+             -->
+ </div>
+ <!-- Floating Action Button (FAB) -->
+ <button class="fixed bottom-24 right-6 bg-primary text-white rounded-full h-16 w-16 flex items-center justify-center shadow-lg hover:bg-primary/90 transition-colors">
+ <span class="material-symbols-outlined text-3xl">add</span>
+ </button>
+ <!-- Bottom Navigation Bar -->
+ <div class="fixed bottom-0 left-0 right-0 h-20 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 flex justify-around items-center">
+ <div class="flex flex-col items-center text-primary">
+ <span class="material-symbols-outlined">home</span>
+ <span class="text-xs font-medium">Home</span>
+ </div>
+ <div class="flex flex-col items-center text-gray-500 dark:text-gray-400">
+ <span class="material-symbols-outlined">notifications</span>
+ <span class="text-xs">Notifications</span>
+ </div>
+ <div class="flex flex-col items-center text-gray-500 dark:text-gray-400">
+ <span class="material-symbols-outlined">settings</span>
+ <span class="text-xs">Settings</span>
+ </div>
+ </div>
+ </div>
++        <script src="/js/config.js"></script>
+         <script type="module">
+   import { ping, whoAmI, listItems, addItem, requestMagicLink } from '/js/api.js';
+ 
+   // quick smoke test in the console
+   ping().then(console.log).catch(console.error);
+ 
+   // example: show who is logged in
+   whoAmI().then(user => {
+     if (!user) return;
+     const el = document.getElementById('user-badge');
+     if (el) el.textContent = `Signed in as ${user.email || 'user'}`;
+   });
+ </script>
+ <ul id="items" class="list-disc pl-6"></ul>
+ 
+ <form id="add-item" class="mt-4 space-x-2">
+   <input id="title" placeholder="Title (e.g., MOT)" class="border rounded px-2 py-1">
+   <input id="expiry" type="date" class="border rounded px-2 py-1">
+   <button class="bg-blue-600 text-white px-3 py-1 rounded">Add</button>
+ </form>
+ 
+ <script type="module">
+   import { listItems, addItem } from '/js/api.js';
+ 
+   const list = document.getElementById('items');
