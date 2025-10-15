@@ -1,9 +1,3 @@
-diff --git a/render.yaml b/render.yaml
-new file mode 100644
-index 0000000000000000000000000000000000000000..fd1562175d6a49dc701d9ae87c3b190da8cba595
---- /dev/null
-+++ b/render.yaml
-@@ -0,0 +1,42 @@
 +services:
 +  - type: web
 +    name: notifynow-backend
