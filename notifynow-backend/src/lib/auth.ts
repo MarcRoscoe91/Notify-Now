@@ -1,8 +1,3 @@
-diff --git a/notifynow-backend/src/lib/auth.ts b/notifynow-backend/src/lib/auth.ts
-index 8b4b255f7f16e170f28b250ee90eba0c24da246e..92c9c4e3eeb73c36b96cd46b28009fac17429644 100644
---- a/notifynow-backend/src/lib/auth.ts
-+++ b/notifynow-backend/src/lib/auth.ts
-@@ -1,46 +1,67 @@
  import { Router } from 'express';
  import jwt from 'jsonwebtoken';
  import { z } from 'zod';
