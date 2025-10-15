@@ -1,40 +1,47 @@
-<label class="flex flex-col">
-<p class="text-text-light dark:text-text-dark text-sm font-medium pb-2">Confirm Password</p>
-<div class="flex w-full flex-1 items-stretch rounded-lg">
-<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-l-lg text-text-light dark:text-text-dark bg-gray-100 dark:bg-gray-800 focus:outline-0 focus:ring-2 focus:ring-primary h-12 placeholder:text-subtle-text-light dark:placeholder:text-subtle-text-dark p-3 text-base font-normal border-r-0 border border-gray-300 dark:border-gray-700" placeholder="Confirm your password" type="password" value=""/>
-<div class="text-subtle-text-light dark:text-subtle-text-dark flex bg-gray-100 dark:bg-gray-800 items-center justify-center pr-3 rounded-r-lg border border-l-0 border-gray-300 dark:border-gray-700 cursor-pointer">
-<span class="material-symbols-outlined text-base">
-                                    visibility_off
-                                </span>
-</div>
-</div>
-<!-- <p class="text-error text-xs pt-1">Passwords do not match</p> -->
-</label>
-</div>
-<p class="text-xs text-subtle-text-light dark:text-subtle-text-dark text-center">
-                    By signing up, you agree to our <a class="font-medium text-primary dark:text-white" href="#">Terms &amp; Conditions</a>.
-                </p>
-<button class="flex min-w-[84px] w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:opacity-90 transition-opacity">
-<span class="truncate">Sign Up</span>
-</button>
-<p class="text-center text-sm text-subtle-text-light dark:text-subtle-text-dark">
-                    Already have an account? <a class="font-medium text-primary dark:text-white" href="#">Log In</a>
-</p>
-</div>
-</div>
-</div>
-        <script src="/js/config.js"></script>
-        <script type="module">
-  import { ping, whoAmI, listItems, addItem, requestMagicLink } from '/js/api.js';
+diff --git a/notifynow-frontend/Signup.html b/notifynow-frontend/Signup.html
+index bf473800d573dfc1507f9eaca001c347319d6b5d..8b33e78322c36b53bc1a9633d2e6b48899089c16 100644
+--- a/notifynow-frontend/Signup.html
++++ b/notifynow-frontend/Signup.html
+@@ -80,40 +80,41 @@
+ <label class="flex flex-col">
+ <p class="text-text-light dark:text-text-dark text-sm font-medium pb-2">Confirm Password</p>
+ <div class="flex w-full flex-1 items-stretch rounded-lg">
+ <input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-l-lg text-text-light dark:text-text-dark bg-gray-100 dark:bg-gray-800 focus:outline-0 focus:ring-2 focus:ring-primary h-12 placeholder:text-subtle-text-light dark:placeholder:text-subtle-text-dark p-3 text-base font-normal border-r-0 border border-gray-300 dark:border-gray-700" placeholder="Confirm your password" type="password" value=""/>
+ <div class="text-subtle-text-light dark:text-subtle-text-dark flex bg-gray-100 dark:bg-gray-800 items-center justify-center pr-3 rounded-r-lg border border-l-0 border-gray-300 dark:border-gray-700 cursor-pointer">
+ <span class="material-symbols-outlined text-base">
+                                     visibility_off
+                                 </span>
+ </div>
+ </div>
+ <!-- <p class="text-error text-xs pt-1">Passwords do not match</p> -->
+ </label>
+ </div>
+ <p class="text-xs text-subtle-text-light dark:text-subtle-text-dark text-center">
+                     By signing up, you agree to our <a class="font-medium text-primary dark:text-white" href="#">Terms &amp; Conditions</a>.
+                 </p>
+ <button class="flex min-w-[84px] w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:opacity-90 transition-opacity">
+ <span class="truncate">Sign Up</span>
+ </button>
+ <p class="text-center text-sm text-subtle-text-light dark:text-subtle-text-dark">
+                     Already have an account? <a class="font-medium text-primary dark:text-white" href="#">Log In</a>
+ </p>
+ </div>
+ </div>
+ </div>
++        <script src="/js/config.js"></script>
+         <script type="module">
+   import { ping, whoAmI, listItems, addItem, requestMagicLink } from '/js/api.js';
+ 
+   // quick smoke test in the console
+   ping().then(console.log).catch(console.error);
+ 
+   // example: show who is logged in
+   whoAmI().then(user => {
+     if (!user) return;
+     const el = document.getElementById('user-badge');
+     if (el) el.textContent = `Signed in as ${user.email || 'user'}`;
+   });
+ </script>
+ </body></html>
+ 
 
-  // quick smoke test in the console
-  ping().then(console.log).catch(console.error);
-
-  // example: show who is logged in
-  whoAmI().then(user => {
-    if (!user) return;
-    const el = document.getElementById('user-badge');
-    if (el) el.textContent = `Signed in as ${user.email || 'user'}`;
-  });
-</script>
-</body></html>
