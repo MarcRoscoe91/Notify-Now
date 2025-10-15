@@ -1,10 +1,3 @@
-diff --git a/README.md b/README.md
-index 8ac43901f5b362ccb83dd344df711899f3c1709a..da5429e958a5206f98910436d1d4ffe8f0b689be 100644
---- a/README.md
-+++ b/README.md
-@@ -1 +1,70 @@
--# Notify-Now
-\ No newline at end of file
 +# Notify-Now
 +
 +Notify-Now is a reminder service consisting of a TypeScript/Express backend and a static HTML frontend. This repository contains everything you need to run the stack locally or deploy it on [Render](https://render.com).
