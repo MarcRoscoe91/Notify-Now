@@ -1,47 +1,20 @@
-// src/index.ts
-import 'dotenv/config';
-import express from 'express';
-import cors from 'cors';
-import cookieParser from 'cookie-parser';
-
-// ---- import your routers/middleware (adjust paths if different)
-import { itemsRouter } from './routes/items.js';
-import { authRouter, requireAuth } from './routes/auth.js';
-import { startCron } from './lib/cron.js';
+import express from "express";
+import cookieParser from "cookie-parser";
+import cron from "node-cron";
 
 const app = express();
-
-// ---- middleware
-app.use(cors({
-  origin: (process.env.CORS_ORIGINS || '').split(',').filter(Boolean),
-  credentials: true,
-}));
 app.use(express.json());
 app.use(cookieParser());
 
-// ---- health routes (Render verifies custom domains by hitting `/`)
-app.get('/', (_req, res) => {
-  res.json({ ok: true, name: 'notifynow-backend' });
-});
-app.head('/', (_req, res) => res.sendStatus(200));
-
-// ---- API routes
-app.use('/api/auth', authRouter);
-app.use('/api/items', requireAuth, itemsRouter);
-
-// (optional) secure manual trigger for cron sweeps if you use external schedulers
-app.post('/internal/run-sweep', async (req, res) => {
-  if (req.headers['x-cron-secret'] !== process.env.CRON_SECRET) return res.sendStatus(401);
-  const mod = await import('./lib/cron.js');
-  await mod.runReminderSweep?.();
-  res.json({ ok: true });
+// Health check route
+app.get("/", (_req, res) => {
+  res.json({ ok: true, name: "notifynow-backend" });
 });
 
-// ---- start cron scheduler inside the web service (harmless if you also use Render Cron)
-startCron();
+// Example cron job
+cron.schedule("0 9 * * *", () => {
+  console.log("Daily cron job running at 9:00 AM");
+}, { timezone: "Europe/London" });
 
-// ---- bind to Render's PORT
-const port = Number(process.env.PORT) || 4000;
-app.listen(port, () => {
-  console.log(`API listening on http://localhost:${port}`);
-});
+const PORT = process.env.PORT || 10000;
+app.listen(PORT, () => console.log(`API listening on port ${PORT}`));
