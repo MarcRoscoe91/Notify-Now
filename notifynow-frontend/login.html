@@ -113,5 +113,31 @@
     const el = document.getElementById('user-badge');
     if (el) el.textContent = `Signed in as ${user.email || 'user'}`;
   });
-</script>        
+</script>     
+<form id="magic-form" class="space-y-2">
+  <input id="magic-email" type="email" required placeholder="you@example.com"
+         class="border rounded px-3 py-2 w-full"/>
+  <button class="bg-blue-600 text-white px-4 py-2 rounded">Send magic link</button>
+  <p id="magic-msg" class="text-sm text-slate-500"></p>
+</form>
+
+<script type="module">
+  import { requestMagicLink } from '/js/api.js';
+  const form = document.getElementById('magic-form');
+  const email = document.getElementById('magic-email');
+  const msg = document.getElementById('magic-msg');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    msg.textContent = 'Sending…';
+    try {
+      const res = await requestMagicLink(email.value);
+      msg.textContent = res?.ok ? 'Check your email.' : (res?.message || 'Sent (check logs if in dev)');
+    } catch (err) {
+      msg.textContent = 'Error sending link';
+      console.error(err);
+    }
+  });
+</script>
+
 </body></html>
