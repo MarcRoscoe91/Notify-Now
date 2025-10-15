@@ -1,8 +1,3 @@
-diff --git a/notifynow-frontend/js/api.js b/notifynow-frontend/js/api.js
-index 73ffe26942c4eec52b4fad6c7ff62446f19524c6..ea0c7231bcbb613e4a778cac48ab01825712cddb 100644
---- a/notifynow-frontend/js/api.js
-+++ b/notifynow-frontend/js/api.js
-@@ -1,27 +1,27 @@
  // js/api.js
 -const API = '/api'; // Netlify proxies to https://api.notify-now.co.uk
 +const API = (typeof window !== 'undefined' && window.__NOTIFY_NOW_API__) || '/api';
