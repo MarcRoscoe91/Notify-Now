@@ -101,6 +101,7 @@
 </div>
 </div>
 </div>
+<script src="/js/config.js"></script>
 <script type="module">
   import { ping, whoAmI, listItems, addItem, requestMagicLink } from '/js/api.js';
 
@@ -126,18 +127,3 @@
   const form = document.getElementById('magic-form');
   const email = document.getElementById('magic-email');
   const msg = document.getElementById('magic-msg');
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    msg.textContent = 'Sending…';
-    try {
-      const res = await requestMagicLink(email.value);
-      msg.textContent = res?.ok ? 'Check your email.' : (res?.message || 'Sent (check logs if in dev)');
-    } catch (err) {
-      msg.textContent = 'Error sending link';
-      console.error(err);
-    }
-  });
-</script>
-
-</body></html>
