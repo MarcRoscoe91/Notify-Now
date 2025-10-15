@@ -1,8 +1,3 @@
-diff --git a/notifynow-backend/src/index.ts b/notifynow-backend/src/index.ts
-index d0ccdec3895677fd4bbaa9097631f86b9d5089e4..650b1c78eaa7404a267d0989fd5b0bb344fc66cb 100644
---- a/notifynow-backend/src/index.ts
-+++ b/notifynow-backend/src/index.ts
-@@ -1,22 +1,45 @@
  import express from "express";
  import cors from "cors";
  import cookieParser from "cookie-parser";
