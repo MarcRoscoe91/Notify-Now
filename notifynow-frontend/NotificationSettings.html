@@ -1,42 +1,47 @@
-</label>
-</div>
-</div>
-</main>
-<footer class="p-4 bg-background-light dark:bg-background-dark sticky bottom-0 border-t border-gray-200 dark:border-gray-700">
-<button class="w-full bg-accent text-white font-bold py-3 px-4 rounded-xl shadow-lg hover:bg-accent/90 focus:outline-none focus:ring-2 focus:ring-accent/50 transition-transform transform active:scale-95">
-            Save Changes
-        </button>
-</footer>
-</div>
-<script>
-    const slider = document.getElementById('week-slider');
-    const fill = document.querySelector('.slider-track-fill');
-
-    function updateSliderFill() {
-        const percentage = ((slider.value - slider.min) / (slider.max - slider.min)) * 100;
-        fill.style.width = `${percentage}%`;
-    }
-
-    slider.addEventListener('input', updateSliderFill);
-    
-    // Initial fill
-    updateSliderFill();
-
-  </script>
-    <script src="/js/config.js"></script>
-    <script type="module">
-  import { ping, whoAmI, listItems, addItem, requestMagicLink } from '/js/api.js';
-
-  // quick smoke test in the console
-  ping().then(console.log).catch(console.error);
-
-  // example: show who is logged in
-  whoAmI().then(user => {
-    if (!user) return;
-    const el = document.getElementById('user-badge');
-    if (el) el.textContent = `Signed in as ${user.email || 'user'}`;
-  });
-</script>
-</body></html>
-
+diff --git a/notifynow-frontend/NotificationSettings.html b/notifynow-frontend/NotificationSettings.html
+index 9d541775de56bc46ad236524826e095f815779e9..c234096cc6d651f045772c5fcf6b7ef19e9dcefb 100644
+--- a/notifynow-frontend/NotificationSettings.html
++++ b/notifynow-frontend/NotificationSettings.html
+@@ -139,40 +139,41 @@
+ </label>
+ </div>
+ </div>
+ </main>
+ <footer class="p-4 bg-background-light dark:bg-background-dark sticky bottom-0 border-t border-gray-200 dark:border-gray-700">
+ <button class="w-full bg-accent text-white font-bold py-3 px-4 rounded-xl shadow-lg hover:bg-accent/90 focus:outline-none focus:ring-2 focus:ring-accent/50 transition-transform transform active:scale-95">
+             Save Changes
+         </button>
+ </footer>
+ </div>
+ <script>
+     const slider = document.getElementById('week-slider');
+     const fill = document.querySelector('.slider-track-fill');
+ 
+     function updateSliderFill() {
+         const percentage = ((slider.value - slider.min) / (slider.max - slider.min)) * 100;
+         fill.style.width = `${percentage}%`;
+     }
+ 
+     slider.addEventListener('input', updateSliderFill);
+     
+     // Initial fill
+     updateSliderFill();
+ 
+   </script>
++    <script src="/js/config.js"></script>
+     <script type="module">
+   import { ping, whoAmI, listItems, addItem, requestMagicLink } from '/js/api.js';
+ 
+   // quick smoke test in the console
+   ping().then(console.log).catch(console.error);
+ 
+   // example: show who is logged in
+   whoAmI().then(user => {
+     if (!user) return;
+     const el = document.getElementById('user-badge');
+     if (el) el.textContent = `Signed in as ${user.email || 'user'}`;
+   });
+ </script>
+ </body></html>
+ 
 
