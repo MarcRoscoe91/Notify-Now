@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://notify-now.co.uk/sitemap.xml
