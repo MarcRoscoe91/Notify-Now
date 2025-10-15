@@ -101,4 +101,17 @@
 </div>
 </div>
 </div>
+<script type="module">
+  import { ping, whoAmI, listItems, addItem, requestMagicLink } from '/js/api.js';
+
+  // quick smoke test in the console
+  ping().then(console.log).catch(console.error);
+
+  // example: show who is logged in
+  whoAmI().then(user => {
+    if (!user) return;
+    const el = document.getElementById('user-badge');
+    if (el) el.textContent = `Signed in as ${user.email || 'user'}`;
+  });
+</script>        
 </body></html>
