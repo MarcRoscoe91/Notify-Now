@@ -6,15 +6,17 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 
-// Health check route
+// Health check for Render + browser test
 app.get("/", (_req, res) => {
   res.json({ ok: true, name: "notifynow-backend" });
 });
+app.head("/", (_req, res) => res.sendStatus(200));
 
-// Example cron job
+// Example cron (9am London)
 cron.schedule("0 9 * * *", () => {
-  console.log("Daily cron job running at 9:00 AM");
+  console.log("[cron] Daily sweep 09:00 Europe/London");
 }, { timezone: "Europe/London" });
 
-const PORT = process.env.PORT || 10000;
-app.listen(PORT, () => console.log(`API listening on port ${PORT}`));
+const PORT = Number(process.env.PORT) || 10000;
+app.listen(PORT, () => console.log(`API listening on http://localhost:${PORT}`));
+
