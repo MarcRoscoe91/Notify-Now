@@ -1,40 +1,46 @@
-<option value="drivers-license">Driver's License</option>
-<option value="id-card">ID Card</option>
-<option value="visa">Visa</option>
-<option value="other">Other</option>
-</select>
-</label>
-<label class="flex flex-col flex-1">
-<p class="text-base font-medium leading-normal pb-2">Expiry Date</p>
-<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-light dark:text-text-dark focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800/20 focus:border-primary h-14 placeholder:text-gray-400 dark:placeholder:text-gray-500 p-[15px] text-base font-normal leading-normal" onblur="(this.type='text')" onfocus="(this.type='date')" placeholder="DD/MM/YYYY" type="text"/>
-</label>
-</div>
-<div class="flex items-center justify-between p-4 rounded-xl bg-white dark:bg-gray-800/20">
-<span class="font-medium">Set Reminder</span>
-<label class="relative inline-flex items-center cursor-pointer">
-<input checked="" class="sr-only peer" type="checkbox" value=""/>
-<div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-accent-orange"></div>
-</label>
-</div>
-</div>
-<div class="p-4 mt-auto sticky bottom-0 bg-background-light dark:bg-background-dark">
-<button class="w-full flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-14 px-4 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
-<span class="truncate">Save Document</span>
-</button>
-</div>
-</div>
-        <script src="/js/config.js"></script>
-        <script type="module">
-  import { ping, whoAmI, listItems, addItem, requestMagicLink } from '/js/api.js';
-
-  // quick smoke test in the console
-  ping().then(console.log).catch(console.error);
-
-  // example: show who is logged in
-  whoAmI().then(user => {
-    if (!user) return;
-    const el = document.getElementById('user-badge');
-    if (el) el.textContent = `Signed in as ${user.email || 'user'}`;
-  });
-</script>
-</body></html>
+diff --git a/notifynow-frontend/AddDocuments.html b/notifynow-frontend/AddDocuments.html
+index 6e0d4497e4336a2e159600e13c52fe58075f0865..106e7d48cbc14089932275b1d6bd7f260a5d4286 100644
+--- a/notifynow-frontend/AddDocuments.html
++++ b/notifynow-frontend/AddDocuments.html
+@@ -90,40 +90,41 @@
+ <option value="drivers-license">Driver's License</option>
+ <option value="id-card">ID Card</option>
+ <option value="visa">Visa</option>
+ <option value="other">Other</option>
+ </select>
+ </label>
+ <label class="flex flex-col flex-1">
+ <p class="text-base font-medium leading-normal pb-2">Expiry Date</p>
+ <input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-light dark:text-text-dark focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800/20 focus:border-primary h-14 placeholder:text-gray-400 dark:placeholder:text-gray-500 p-[15px] text-base font-normal leading-normal" onblur="(this.type='text')" onfocus="(this.type='date')" placeholder="DD/MM/YYYY" type="text"/>
+ </label>
+ </div>
+ <div class="flex items-center justify-between p-4 rounded-xl bg-white dark:bg-gray-800/20">
+ <span class="font-medium">Set Reminder</span>
+ <label class="relative inline-flex items-center cursor-pointer">
+ <input checked="" class="sr-only peer" type="checkbox" value=""/>
+ <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-accent-orange"></div>
+ </label>
+ </div>
+ </div>
+ <div class="p-4 mt-auto sticky bottom-0 bg-background-light dark:bg-background-dark">
+ <button class="w-full flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-14 px-4 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
+ <span class="truncate">Save Document</span>
+ </button>
+ </div>
+ </div>
++        <script src="/js/config.js"></script>
+         <script type="module">
+   import { ping, whoAmI, listItems, addItem, requestMagicLink } from '/js/api.js';
+ 
+   // quick smoke test in the console
+   ping().then(console.log).catch(console.error);
+ 
+   // example: show who is logged in
+   whoAmI().then(user => {
+     if (!user) return;
+     const el = document.getElementById('user-badge');
+     if (el) el.textContent = `Signed in as ${user.email || 'user'}`;
+   });
+ </script>
+ </body></html>
+ 
