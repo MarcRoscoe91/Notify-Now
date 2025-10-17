@@ -1,42 +1,165 @@
- </label>
- </div>
- </div>
- </main>
- <footer class="p-4 bg-background-light dark:bg-background-dark sticky bottom-0 border-t border-gray-200 dark:border-gray-700">
- <button class="w-full bg-accent text-white font-bold py-3 px-4 rounded-xl shadow-lg hover:bg-accent/90 focus:outline-none focus:ring-2 focus:ring-accent/50 transition-transform transform active:scale-95">
-             Save Changes
-         </button>
- </footer>
- </div>
- <script>
-     const slider = document.getElementById('week-slider');
-     const fill = document.querySelector('.slider-track-fill');
- 
-     function updateSliderFill() {
-         const percentage = ((slider.value - slider.min) / (slider.max - slider.min)) * 100;
-         fill.style.width = `${percentage}%`;
-     }
- 
-     slider.addEventListener('input', updateSliderFill);
-     
-     // Initial fill
-     updateSliderFill();
- 
-   </script>
-+    <script src="/js/config.js"></script>
-     <script type="module">
-   import { ping, whoAmI, listItems, addItem, requestMagicLink } from '/js/api.js';
- 
-   // quick smoke test in the console
-   ping().then(console.log).catch(console.error);
- 
-   // example: show who is logged in
-   whoAmI().then(user => {
-     if (!user) return;
-     const el = document.getElementById('user-badge');
-     if (el) el.textContent = `Signed in as ${user.email || 'user'}`;
-   });
- </script>
- </body></html>
- 
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Notification Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#4A90E2",
+            "background-light": "#F2F2F7",
+            "background-dark": "#101c22",
+            "accent": "#7ED321",
+            "text-light": "#333333",
+            "text-dark": "#f7fafc"
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.5rem",
+            "lg": "0.75rem",
+            "xl": "1rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border: 2px solid #4A90E2;
+      border-radius: 9999px;
+      cursor: pointer;
+      margin-top: -10px;
+      transition: transform 0.2s ease-in-out;
+    }
+    .slider-thumb::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border: 2px solid #4A90E2;
+      border-radius: 9999px;
+      cursor: pointer;
+      margin-top: -10px;
+    }
+    .slider-thumb:active {
+        transform: scale(1.2);
+    }
+    .slider-track {
+        height: 4px;
+        background-color: #d1d5db;
+        border-radius: 9999px;
+    }
+    .slider-track-fill {
+        background-color: #4A90E2;
+    }
+    .toggle-checkbox:checked {
+        background-color: #4A90E2;
+    }
+    .toggle-checkbox:checked + .toggle-label {
+        background-color: #4A90E2;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<header class="sticky top-0 z-20 w-full bg-background-light dark:bg-background-dark px-4 py-3 border-b border-gray-200 dark:border-gray-700">
+<h1 class="text-2xl font-bold text-center text-text-light dark:text-text-dark">Notification Settings</h1>
+</header>
+<main class="flex-1 px-4 py-6 pb-24">
+<h2 class="text-xl font-bold leading-tight tracking-[-0.015em] pb-2 text-text-light dark:text-text-dark">Reminder Timing</h2>
+<p class="text-sm font-normal leading-normal pb-6 text-gray-500 dark:text-gray-400">Choose how many weeks before expiry you want to be reminded.</p>
+<div class="@container mb-12">
+<div class="relative flex w-full flex-col items-center justify-between gap-3">
+<div class="w-full relative">
+<input class="w-full h-1 bg-gray-300 dark:bg-gray-600 rounded-full appearance-none slider-thumb" id="week-slider" max="8" min="1" type="range" value="4"/>
+<div class="absolute top-1/2 left-0 w-full h-1 -translate-y-1/2 rounded-full pointer-events-none bg-gray-300 dark:bg-gray-600">
+<div class="h-full bg-primary rounded-full" style="width: 57.14%;"></div>
+</div>
+</div>
+<div class="flex w-full justify-between text-xs text-gray-500 dark:text-gray-400 mt-2">
+<span>1 Week</span>
+<span>2 Weeks</span>
+<span>4 Weeks</span>
+<span>8 Weeks</span>
+</div>
+</div>
+</div>
+<h2 class="text-xl font-bold leading-tight tracking-[-0.015em] pb-4 border-t border-gray-200 dark:border-gray-700 pt-8 text-text-light dark:text-text-dark">Notification Types</h2>
+<div class="space-y-4">
+<div class="flex items-center justify-between bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
+<span class="font-medium text-text-light dark:text-text-dark">Push Notifications</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer toggle-checkbox" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-gray-200 dark:bg-gray-700 rounded-full peer peer-focus:ring-2 peer-focus:ring-primary/50 dark:peer-focus:ring-primary/80 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
+<span class="font-medium text-text-light dark:text-text-dark">Email Notifications</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer toggle-checkbox" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-gray-200 dark:bg-gray-700 rounded-full peer peer-focus:ring-2 peer-focus:ring-primary/50 dark:peer-focus:ring-primary/80 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
+<span class="font-medium text-text-light dark:text-text-dark">In-App Banners</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer toggle-checkbox" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-gray-200 dark:bg-gray-700 rounded-full peer peer-focus:ring-2 peer-focus:ring-primary/50 dark:peer-focus:ring-primary/80 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</main>
+<nav class="fixed bottom-0 left-0 right-0 bg-background-light dark:bg-background-dark border-t border-gray-200 dark:border-gray-700 px-4 py-2 flex justify-around">
+<a class="flex flex-col items-center justify-center text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-xs">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">upload_file</span>
+<span class="text-xs">Upload</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-xs font-semibold">Settings</span>
+</a>
+</nav>
+</div>
+<script>
+    const slider = document.getElementById('week-slider');
+    const fill = document.querySelector('.slider-track-fill');
+    function updateSliderFill() {
+        const percentage = ((slider.value - slider.min) / (slider.max - slider.min)) * 100;
+        fill.style.width = `${percentage}%`;
+    }
+    slider.addEventListener('input', updateSliderFill);
+    // Initial fill
+    updateSliderFill();
+  </script>
+
+</body></html>
 
