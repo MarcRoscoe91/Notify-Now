@@ -1,51 +1,148 @@
-                 <p class="mt-4 text-lg font-semibold text-text-light dark:text-text-dark">No documents yet.</p>
-                 <p class="mt-1 text-sm text-text-light/70 dark:text-text-dark/70">Tap the '+' to add your first one!</p>
-             </div>
-             -->
- </div>
- <!-- Floating Action Button (FAB) -->
- <button class="fixed bottom-24 right-6 bg-primary text-white rounded-full h-16 w-16 flex items-center justify-center shadow-lg hover:bg-primary/90 transition-colors">
- <span class="material-symbols-outlined text-3xl">add</span>
- </button>
- <!-- Bottom Navigation Bar -->
- <div class="fixed bottom-0 left-0 right-0 h-20 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 flex justify-around items-center">
- <div class="flex flex-col items-center text-primary">
- <span class="material-symbols-outlined">home</span>
- <span class="text-xs font-medium">Home</span>
- </div>
- <div class="flex flex-col items-center text-gray-500 dark:text-gray-400">
- <span class="material-symbols-outlined">notifications</span>
- <span class="text-xs">Notifications</span>
- </div>
- <div class="flex flex-col items-center text-gray-500 dark:text-gray-400">
- <span class="material-symbols-outlined">settings</span>
- <span class="text-xs">Settings</span>
- </div>
- </div>
- </div>
-+        <script src="/js/config.js"></script>
-         <script type="module">
-   import { ping, whoAmI, listItems, addItem, requestMagicLink } from '/js/api.js';
- 
-   // quick smoke test in the console
-   ping().then(console.log).catch(console.error);
- 
-   // example: show who is logged in
-   whoAmI().then(user => {
-     if (!user) return;
-     const el = document.getElementById('user-badge');
-     if (el) el.textContent = `Signed in as ${user.email || 'user'}`;
-   });
- </script>
- <ul id="items" class="list-disc pl-6"></ul>
- 
- <form id="add-item" class="mt-4 space-x-2">
-   <input id="title" placeholder="Title (e.g., MOT)" class="border rounded px-2 py-1">
-   <input id="expiry" type="date" class="border rounded px-2 py-1">
-   <button class="bg-blue-600 text-white px-3 py-1 rounded">Add</button>
- </form>
- 
- <script type="module">
-   import { listItems, addItem } from '/js/api.js';
- 
-   const list = document.getElementById('items');
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Document Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#13a4ec",
+            "background-light": "#f6f7f8",
+            "background-dark": "#101c22",
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden pb-20">
+<header class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-3 justify-between sticky top-0 z-10 border-b border-slate-200 dark:border-slate-800">
+<div class="text-slate-800 dark:text-slate-200 flex size-10 shrink-0 items-center justify-center">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</div>
+<h1 class="text-slate-900 dark:text-slate-50 text-xl font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Document Details</h1>
+<div class="flex w-10 items-center justify-end">
+</div>
+</header>
+<main class="flex flex-col flex-1">
+<div class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between">
+<h2 class="text-slate-800 dark:text-slate-200 text-lg font-bold leading-tight tracking-[-0.015em] flex-1">Passport</h2>
+<div class="flex items-center justify-end">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 bg-transparent text-slate-800 dark:text-slate-200 gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0">
+<span class="material-symbols-outlined text-2xl">edit</span>
+</button>
+</div>
+</div>
+<div class="flex w-full grow bg-background-light dark:bg-background-dark @container py-3">
+<div class="w-full gap-1 overflow-hidden bg-background-light dark:bg-background-dark @[480px]:gap-2 aspect-[4/3] flex px-4">
+<div class="w-full bg-center bg-no-repeat bg-cover aspect-auto rounded-xl flex-1" data-alt="A scanned image of a passport document" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA8IEvb6gBWeDMbM0qq_etTEXni8FFGiLjPEIeK_RghiENSxt9e4s7usXIVZAXjlvNEPqYPpnsA4ZxdE1cuscAaYMy0cXzoRCQ4260AdXYCHfbOe_AXPqPcZ5JLw6G2Vu5s43E4Cg1KJUOer6BvaDDmpdffVJGFZLxxR46r5auxp_4csq8O5zhUQdS5Iwq-07JR-aZqxfyHvfduHPt1vKnRZHz1uPCIVXwlRh45IQIsSQAlFdFLojZfjbV_3bHu-K-vy_Et2uIpVws');"></div>
+</div>
+</div>
+<div class="flex flex-col gap-4 p-4 bg-background-light dark:bg-background-dark">
+<div class="flex items-center gap-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl px-4 min-h-[72px] py-3">
+<div class="text-orange-500 flex items-center justify-center rounded-lg bg-orange-500/20 shrink-0 size-12">
+<span class="material-symbols-outlined text-3xl">event_available</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-slate-800 dark:text-slate-200 text-base font-medium leading-normal line-clamp-1">Expires on: 24 October 2024</p>
+<p class="text-orange-500 text-sm font-normal leading-normal line-clamp-2">30 days remaining</p>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl px-4 min-h-[72px] py-3 justify-between">
+<div class="flex items-center gap-4">
+<div class="text-slate-600 dark:text-slate-300 flex items-center justify-center rounded-lg bg-slate-200 dark:bg-slate-700 shrink-0 size-12">
+<span class="material-symbols-outlined text-3xl">description</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-slate-800 dark:text-slate-200 text-base font-medium leading-normal line-clamp-1">Notes</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal line-clamp-2">Celine's passport, issued in 2014.</p>
+</div>
+</div>
+<div class="shrink-0">
+<div class="text-slate-400 dark:text-slate-500 flex size-7 items-center justify-center">
+<span class="material-symbols-outlined text-2xl">arrow_forward_ios</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl px-4 min-h-14 justify-between py-3">
+<div class="flex items-center gap-4">
+<div class="text-slate-600 dark:text-slate-300 flex items-center justify-center rounded-lg bg-slate-200 dark:bg-slate-700 shrink-0 size-12">
+<span class="material-symbols-outlined text-3xl">notifications</span>
+</div>
+<p class="text-slate-800 dark:text-slate-200 text-base font-normal leading-normal flex-1 truncate">Notification</p>
+</div>
+<div class="shrink-0">
+<label class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full border-none bg-slate-200 dark:bg-slate-700 p-0.5 has-[:checked]:justify-end has-[:checked]:bg-primary">
+<div class="h-full w-[27px] rounded-full bg-white" style="box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 8px, rgba(0, 0, 0, 0.06) 0px 3px 1px;"></div>
+<input checked="" class="invisible absolute" type="checkbox"/>
+</label>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-3 p-4 bg-background-light dark:bg-background-dark mt-auto">
+<button class="flex w-full items-center justify-center rounded-xl h-12 bg-primary text-white text-base font-bold leading-normal tracking-[-0.015em]">
+            Mark as Renewed
+        </button>
+<div class="flex gap-3">
+<button class="flex flex-1 items-center justify-center rounded-xl h-12 bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 text-base font-bold leading-normal tracking-[-0.015em] gap-2">
+<span class="material-symbols-outlined">share</span>
+                Share
+            </button>
+<button class="flex flex-1 items-center justify-center rounded-xl h-12 bg-red-100 dark:bg-red-900/40 text-red-500 dark:text-red-400 text-base font-bold leading-normal tracking-[-0.015em] gap-2">
+<span class="material-symbols-outlined">delete</span>
+                Delete
+            </button>
+</div>
+</div>
+</main>
+<nav class="fixed bottom-0 left-0 right-0 bg-background-light dark:bg-background-dark flex justify-around p-2 border-t border-slate-200 dark:border-slate-800">
+<a class="flex flex-col items-center justify-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined text-2xl">home</span>
+<span class="text-xs font-medium">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 text-slate-500 dark:text-slate-400" href="#">
+<span class="material-symbols-outlined text-2xl">upload</span>
+<span class="text-xs font-medium">Upload</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 text-slate-500 dark:text-slate-400" href="#">
+<span class="material-symbols-outlined text-2xl">settings</span>
+<span class="text-xs font-medium">Settings</span>
+</a>
+</nav>
+</div>
+</body></html>
