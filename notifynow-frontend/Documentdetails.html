@@ -1,41 +1,151 @@
- </div>
- <div class="shrink-0">
- <label class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full border-none bg-slate-200 dark:bg-slate-700 p-0.5 has-[:checked]:justify-end has-[:checked]:bg-primary">
- <div class="h-full w-[27px] rounded-full bg-white" style="box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 8px, rgba(0, 0, 0, 0.06) 0px 3px 1px;"></div>
- <input checked="" class="invisible absolute" type="checkbox"/>
- </label>
- </div>
- </div>
- </div>
- <div class="flex flex-col gap-3 p-4 bg-background-light dark:bg-background-dark mt-auto">
- <button class="flex w-full items-center justify-center rounded-xl h-12 bg-primary text-white text-base font-bold leading-normal tracking-[-0.015em]">
-             Mark as Renewed
-         </button>
- <div class="flex gap-3">
- <button class="flex flex-1 items-center justify-center rounded-xl h-12 bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 text-base font-bold leading-normal tracking-[-0.015em] gap-2">
- <span class="material-symbols-outlined">share</span>
-                 Share
-             </button>
- <button class="flex flex-1 items-center justify-center rounded-xl h-12 bg-red-100 dark:bg-red-900/40 text-red-500 dark:text-red-400 text-base font-bold leading-normal tracking-[-0.015em] gap-2">
- <span class="material-symbols-outlined">delete</span>
-                 Delete
-             </button>
- </div>
- </div>
- </div>
-+    <script src="/js/config.js"></script>
-     <script type="module">
-   import { ping, whoAmI, listItems, addItem, requestMagicLink } from '/js/api.js';
- 
-   // quick smoke test in the console
-   ping().then(console.log).catch(console.error);
- 
-   // example: show who is logged in
-   whoAmI().then(user => {
-     if (!user) return;
-     const el = document.getElementById('user-badge');
-     if (el) el.textContent = `Signed in as ${user.email || 'user'}`;
-   });
- </script>
- </body></html>
- 
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Document Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#4A90E2",
+              "background-light": "#F8F9FA",
+              "background-dark": "#101c22",
+              "text-light": "#4A4A4A",
+              "text-dark": "#E0E0E0",
+              "status-green": "#7ED321",
+              "status-orange": "#F5A623",
+              "status-red": "#D0021B",
+            },
+            fontFamily: {
+              display: ["Inter", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.5rem",
+              lg: "0.75rem",
+              xl: "1rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+<style>
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10 border-b border-gray-200 dark:border-gray-700">
+<h1 class="text-2xl font-bold leading-tight tracking-tight text-text-light dark:text-text-dark flex-1">My Documents</h1>
+<button class="text-text-light dark:text-text-dark p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+<div class="flex gap-3 p-4 overflow-x-auto bg-background-light dark:bg-background-dark sticky top-[70px] z-10">
+<div class="flex h-10 shrink-0 cursor-pointer items-center justify-center gap-x-2 rounded-full bg-primary text-white pl-5 pr-5">
+<p class="text-sm font-medium leading-normal">All</p>
+</div>
+<div class="flex h-10 shrink-0 cursor-pointer items-center justify-center gap-x-2 rounded-full bg-gray-200 dark:bg-gray-800 pl-5 pr-5">
+<p class="text-text-light dark:text-text-dark text-sm font-medium leading-normal">Passport</p>
+</div>
+<div class="flex h-10 shrink-0 cursor-pointer items-center justify-center gap-x-2 rounded-full bg-gray-200 dark:bg-gray-800 pl-5 pr-5">
+<p class="text-text-light dark:text-text-dark text-sm font-medium leading-normal">ID</p>
+</div>
+<div class="flex h-10 shrink-0 cursor-pointer items-center justify-center gap-x-2 rounded-full bg-gray-200 dark:bg-gray-800 pl-5 pr-5">
+<p class="text-text-light dark:text-text-dark text-sm font-medium leading-normal">Insurance</p>
+</div>
+<div class="flex h-10 shrink-0 cursor-pointer items-center justify-center gap-x-2 rounded-full bg-gray-200 dark:bg-gray-800 pl-5 pr-5">
+<p class="text-text-light dark:text-text-dark text-sm font-medium leading-normal">Visa</p>
+</div>
+</div>
+<div class="flex flex-col gap-4 p-4 pb-28">
+<div class="flex items-center gap-4 bg-white dark:bg-gray-800/50 p-4 rounded-xl shadow-sm">
+<div class="flex items-center justify-center rounded-lg bg-status-red/20 text-status-red shrink-0 size-14">
+<span class="material-symbols-outlined text-3xl">id_card</span>
+</div>
+<div class="flex flex-col justify-center flex-1">
+<p class="text-base font-bold leading-normal line-clamp-1 text-text-light dark:text-text-dark">National ID</p>
+<p class="text-sm font-normal leading-normal line-clamp-2 text-text-light/80 dark:text-text-dark/80">Expires: 01 Jan 2024</p>
+<p class="text-sm font-medium leading-normal text-status-red">Expired</p>
+</div>
+<div class="flex size-7 items-center justify-center shrink-0">
+<div class="size-4 rounded-full bg-status-red"></div>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-white dark:bg-gray-800/50 p-4 rounded-xl shadow-sm">
+<div class="flex items-center justify-center rounded-lg bg-status-orange/20 text-status-orange shrink-0 size-14">
+<span class="material-symbols-outlined text-3xl">book</span>
+</div>
+<div class="flex flex-col justify-center flex-1">
+<p class="text-base font-bold leading-normal line-clamp-1 text-text-light dark:text-text-dark">Passport</p>
+<p class="text-sm font-normal leading-normal line-clamp-2 text-text-light/80 dark:text-text-dark/80">Expires: 15 Dec 2024</p>
+<p class="text-sm font-medium leading-normal text-status-orange">25 days left</p>
+</div>
+<div class="flex size-7 items-center justify-center shrink-0">
+<div class="size-4 rounded-full bg-status-orange"></div>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-white dark:bg-gray-800/50 p-4 rounded-xl shadow-sm">
+<div class="flex items-center justify-center rounded-lg bg-status-green/20 text-status-green shrink-0 size-14">
+<span class="material-symbols-outlined text-3xl">directions_car</span>
+</div>
+<div class="flex flex-col justify-center flex-1">
+<p class="text-base font-bold leading-normal line-clamp-1 text-text-light dark:text-text-dark">Driver's License</p>
+<p class="text-sm font-normal leading-normal line-clamp-2 text-text-light/80 dark:text-text-dark/80">Expires: 24 Oct 2025</p>
+<p class="text-sm font-medium leading-normal text-status-green">Active</p>
+</div>
+<div class="flex size-7 items-center justify-center shrink-0">
+<div class="size-4 rounded-full bg-status-green"></div>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-white dark:bg-gray-800/50 p-4 rounded-xl shadow-sm">
+<div class="flex items-center justify-center rounded-lg bg-status-green/20 text-status-green shrink-0 size-14">
+<span class="material-symbols-outlined text-3xl">health_and_safety</span>
+</div>
+<div class="flex flex-col justify-center flex-1">
+<p class="text-base font-bold leading-normal line-clamp-1 text-text-light dark:text-text-dark">Health Insurance</p>
+<p class="text-sm font-normal leading-normal line-clamp-2 text-text-light/80 dark:text-text-dark/80">Expires: 30 Jun 2026</p>
+<p class="text-sm font-medium leading-normal text-status-green">Active</p>
+</div>
+<div class="flex size-7 items-center justify-center shrink-0">
+<div class="size-4 rounded-full bg-status-green"></div>
+</div>
+</div>
+</div>
+<div class="fixed bottom-0 left-0 right-0 h-20 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 flex justify-around items-center">
+<a class="flex flex-col items-center text-primary" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-xs font-medium">Home</span>
+</a>
+<a class="flex flex-col items-center text-gray-500 dark:text-gray-400" href="#">
+<span class="material-symbols-outlined">upload_file</span>
+<span class="text-xs">Upload</span>
+</a>
+<a class="flex flex-col items-center text-gray-500 dark:text-gray-400" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-xs">Settings</span>
+</a>
+</div>
+</div>
+</body></html>
